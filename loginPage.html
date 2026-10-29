@@ -2,20 +2,29 @@
 <html>
 <head>
   <title>Login</title>
+  <link rel="stylesheet" href="./loginPage.css">
 </head>
 <body>
-  <h1>Login</h1>
 
-  <button id="googleLogin">Sign in with Google</button>
+    //image on the left
+    <div> class="image-side">
 
-  <h2>Or log in with email</h2>
+        <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/753120736/large.jpg" alt="Login image did not Load">
 
-  <input id="email" type="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
+    </div>
 
-  <button id="emailLogin">Log In</button>
-  <button id="createAccount">Create Account</button>
+    <div class="login-side">
 
-  <script type="module" src="./loginPage.js"></script>
+        <h1>Welcome Back!<br>Sign into your account here.</h1>
+
+        <button id="googleLogin">Continue with Google</button>
+
+
+
+    </div>
+
+
+    <script type="module" src="./loginPage.js"></script>
+
 </body>
 </html>
