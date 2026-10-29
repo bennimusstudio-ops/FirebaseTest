@@ -5,6 +5,6 @@ import { signInWithPopup } from "https://www.gstatic.com/firebasejs/12.0.0/fireb
 document.getElementById("googleLogin").onclick = async () => {
     await signInWithPopup(auth, googleProvider);
 
-    window.location.href = "./firebaseTest.html";
+    window.location.href = "./Home_page.html";
 };
 
