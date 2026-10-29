@@ -1,9 +1,9 @@
 * {
   box-sizing: border-box;
-  background-color: #e5f1dc;
 }
 html, body {
     height: 100%;
+    background-color: #e5f1dc;
 }
 
 body {
