@@ -1,11 +1,5 @@
-javascript
 import { auth, googleProvider } from "./firebase.js";
-
-import {
-    signInWithPopup,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { signInWithPopup } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 // Google login.
 document.getElementById("googleLogin").onclick = async () => {
