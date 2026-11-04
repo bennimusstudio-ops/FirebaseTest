@@ -50,6 +50,7 @@ async function loadBirds(reset = false) {
         + "&taxon_id=3"
         + "&photos=true"
         + "&per_page=40"
+        + "&page=" + currentPage
         //the place id for humboldt county is 1247
         + (humboldtFilter.checked ? "&place_id=1247" : "");
 
@@ -68,7 +69,6 @@ async function loadBirds(reset = false) {
         const data = await response.json();
 
         const birds = data.results.map(item => item.taxon);
-
 
         // REMOVE DUPLICATES
 
@@ -219,7 +219,7 @@ function updateLoadMoreButton(numberOfBirds) {
 
 
     button.style.display =
-        numberOfBirds === RESULTS_PER_PAGE ? "block" : "none";
+        numberOfBirds === 40 ? "block" : "none";
 
 }
 
