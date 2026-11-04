@@ -1,21 +1,16 @@
-
 // HTML ELEMENTS
 
 const birdResults = document.getElementById("bird-results");
 
 const humboldtFilter = document.getElementById("humboldt-filter");
 
-
 const galleryLoading = document.getElementById("gallery-loading");
-
-const galleryError = document.getElementById("gallery-error");
 
 const galleryEmpty = document.getElementById("gallery-empty");
 
 const galleryDescription = document.getElementById("gallery-description");
 
-
-// GALLERY VARIABLES
+const gallerySearch = document.getElementById("gallery-search");
 
 let currentPage = 1;
 
@@ -31,7 +26,6 @@ async function loadBirds(reset = false) {
     loading = true;
 
     galleryLoading.style.display = "block";
-    galleryError.style.display = "none";
     galleryEmpty.style.display = "none";
 
     if (reset) {
@@ -42,8 +36,6 @@ async function loadBirds(reset = false) {
 
     }
 
-    try {
-
     const url =
         "https://api.inaturalist.org/v1/observations/species_counts"
         + "?taxon_id=3"
@@ -52,69 +44,40 @@ async function loadBirds(reset = false) {
         //the place id for humboldt county is 1247
         + (humboldtFilter.checked ? "&place_id=1247" : "");
 
-        galleryDescription.textContent = humboldtFilter.checked
-            ? "Bird species observed in Humboldt County."
-            : "Explore birds from around the world.";
-        
+    galleryDescription.textContent = humboldtFilter.checked
+        ? "Bird species observed in Humboldt County."
+        : "Explore birds from around the world.";
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    const birds = data.results.map(item => item.taxon);
 
 
-        const response = await fetch(url);
+    if (birds.length === 0 && currentPage === 1) {
 
-        if (!response.ok) {
-            throw new Error("API request failed.");
-        }
-
-        const data = await response.json();
-
-        const birds = data.results.map(item => item.taxon);
-
-        // REMOVE DUPLICATES
-
-        const uniqueBirds = [
-            ...new Map(birds.map(bird =>
-                [bird.id, bird]
-            )).values()
-        ];
-
-
-        if (uniqueBirds.length === 0 && currentPage === 1) {
-
-            galleryEmpty.style.display = "block";
-
-        }
-
-
-        // CREATE BIRD CARDS
-
-        uniqueBirds.forEach(bird => {
-
-            createBirdCard(bird);
-
-        });
-
-
-        currentPage++;
-
-        updateLoadMoreButton(uniqueBirds.length);
-
+        galleryEmpty.style.display = "block";
 
     }
 
-    catch (error) {
 
-        console.error(error);
+    // CREATE BIRD CARDS
 
-        galleryError.style.display = "block";
+    birds.forEach(bird => {
 
-    }
+        createBirdCard(bird);
 
-    finally {
+    });
 
-        loading = false;
 
-        galleryLoading.style.display = "none";
+    currentPage++;
 
-    }
+    updateLoadMoreButton(birds.length);
+
+    loading = false;
+
+    galleryLoading.style.display = "none";
 
 }
 
@@ -134,18 +97,9 @@ function createBirdCard(bird) {
 
     image.alt = bird.preferred_common_name || bird.name;
 
-
-    if (bird.default_photo) {
-
-        image.src = bird.default_photo.medium_url;
-
-    }
-
-    else {
-
-        image.src = "placeholder.png";
-
-    }
+    image.src = bird.default_photo
+        ? bird.default_photo.medium_url
+        : "placeholder.png";
 
 
     // COMMON NAME
@@ -223,14 +177,15 @@ function updateLoadMoreButton(numberOfBirds) {
 
 
 //reloads the birds when humboldt filter is clicked
+
 humboldtFilter.addEventListener("change", function() {
 
     loadBirds(true);
 
 });
 
+
 //go to birdSummary page for search 
-const gallerySearch = document.getElementById("gallery-search");
 
 gallerySearch.addEventListener("keydown", function(event) {
 
@@ -249,5 +204,7 @@ gallerySearch.addEventListener("keydown", function(event) {
 
 });
 
+
 //load on page startup
+
 loadBirds(true);
