@@ -70,7 +70,7 @@ async function loadBirds(reset = false) {
             galleryEmpty.style.display = "block";
         }
 
-        // CREATE BIRD CARDS
+      //create a card
 
         birds.forEach(bird => {
             createBirdCard(bird);
@@ -108,13 +108,14 @@ function createBirdCard(bird) {
     card.className = "bird-card";
 
 
-    // BIRD IMAGE
+    // load the image
 
     const image = document.createElement("img");
 
+    //dont load images unless you scroll down to see them
     image.loading = "lazy";
 
-    image.alt = bird.preferred_common_name || bird.name;
+    image.alt = bird.preferred_common_name;
 
 
     if (bird.default_photo) {
@@ -130,15 +131,14 @@ function createBirdCard(bird) {
     }
 
 
-    // COMMON NAME
+    //get teh common name
 
     const commonName = document.createElement("h3");
 
-    commonName.textContent =
-        bird.preferred_common_name || bird.name;
+    commonName.textContent = bird.preferred_common_name;
 
 
-    // SCIENTIFIC NAME
+    // get the scientific name
 
     const scientificName = document.createElement("p");
 
@@ -147,7 +147,7 @@ function createBirdCard(bird) {
     scientificName.textContent = bird.name;
 
 
-    // ADD ELEMENTS TO CARD
+    //create the card
 
     card.appendChild(image);
 
@@ -156,14 +156,13 @@ function createBirdCard(bird) {
     card.appendChild(scientificName);
 
 
-    // OPEN INATURALIST SPECIES PAGE
+    //if the card is clicked, go to birdSummary
 
     card.addEventListener("click", function() {
 
-        window.open(
-            "https://www.inaturalist.org/taxa/" + bird.id,
-            "_blank"
-        );
+        const birdName = bird.preferred_common_name;
+
+        window.location.href = "birdSummary.html?search=" + encodeURIComponent(birdName);
 
     });
 
