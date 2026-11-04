@@ -1,10 +1,8 @@
-
 // HTML ELEMENTS
 
 const birdResults = document.getElementById("bird-results");
 
 const humboldtFilter = document.getElementById("humboldt-filter");
-
 
 const galleryLoading = document.getElementById("gallery-loading");
 
@@ -13,6 +11,8 @@ const galleryError = document.getElementById("gallery-error");
 const galleryEmpty = document.getElementById("gallery-empty");
 
 const galleryDescription = document.getElementById("gallery-description");
+
+const gallerySearch = document.getElementById("gallery-search");
 
 
 // GALLERY VARIABLES
@@ -44,19 +44,17 @@ async function loadBirds(reset = false) {
 
     try {
 
-    const url =
-        "https://api.inaturalist.org/v1/observations/species_counts"
-        + "?taxon_id=3"
-        + "&per_page=40"
-        + "&page=" + currentPage
-        //the place id for humboldt county is 1247
-        + (humboldtFilter.checked ? "&place_id=1247" : "");
+        const url =
+            "https://api.inaturalist.org/v1/observations/species_counts"
+            + "?taxon_id=3"
+            + "&per_page=40"
+            + "&page=" + currentPage
+            //the place id for humboldt county is 1247
+            + (humboldtFilter.checked ? "&place_id=1247" : "");
 
         galleryDescription.textContent = humboldtFilter.checked
             ? "Bird species observed in Humboldt County."
             : "Explore birds from around the world.";
-        
-
 
         const response = await fetch(url);
 
@@ -68,35 +66,19 @@ async function loadBirds(reset = false) {
 
         const birds = data.results.map(item => item.taxon);
 
-        // REMOVE DUPLICATES
-
-        const uniqueBirds = [
-            ...new Map(birds.map(bird =>
-                [bird.id, bird]
-            )).values()
-        ];
-
-
-        if (uniqueBirds.length === 0 && currentPage === 1) {
-
+        if (birds.length === 0 && currentPage === 1) {
             galleryEmpty.style.display = "block";
-
         }
-
 
         // CREATE BIRD CARDS
 
-        uniqueBirds.forEach(bird => {
-
+        birds.forEach(bird => {
             createBirdCard(bird);
-
         });
-
 
         currentPage++;
 
-        updateLoadMoreButton(uniqueBirds.length);
-
+        updateLoadMoreButton(birds.length);
 
     }
 
@@ -185,7 +167,7 @@ function createBirdCard(bird) {
 
     });
 
-gallery-error
+
     birdResults.appendChild(card);
 
 }
@@ -223,11 +205,13 @@ function updateLoadMoreButton(numberOfBirds) {
 
 
 //reloads the birds when humboldt filter is clicked
+
 humboldtFilter.addEventListener("change", function() {
 
     loadBirds(true);
 
 });
+
 
 //go to birdSummary page for search 
 
@@ -250,4 +234,5 @@ gallerySearch.addEventListener("keydown", function(event) {
 
 
 //load on page startup
+
 loadBirds(true);
