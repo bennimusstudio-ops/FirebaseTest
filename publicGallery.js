@@ -46,7 +46,7 @@ async function loadBirds(reset = false) {
 
     const url =
         "https://api.inaturalist.org/v1/observations/species_counts"
-        + "&taxon_id=3"
+        + "?taxon_id=3"
         + "&per_page=40"
         + "&page=" + currentPage
         //the place id for humboldt county is 1247
