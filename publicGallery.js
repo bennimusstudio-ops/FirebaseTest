@@ -229,6 +229,25 @@ humboldtFilter.addEventListener("change", function() {
 
 });
 
+//go to birdSummary page for search 
+const gallerySearch = document.getElementById("gallery-search");
+
+gallerySearch.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+        const searchName = gallerySearch.value.trim();
+
+        if (searchName !== "") {
+
+            window.location.href =
+                "birdSummary.html?search=" + encodeURIComponent(searchName);
+
+        }
+
+    }
+
+});
 
 //load on page startup
 loadBirds(true);
