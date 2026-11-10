@@ -126,17 +126,26 @@ input {
     background-color: #d4e7c8;
 }
 
-#bird-gallery-heading {
+#gallery-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    width: 100%;
+    padding: 25px 15px;
     background-color: #557c50;
     color: white;
-    padding: 20px;
 }
 
-#bird-gallery-heading h1,
-#bird-gallery-heading p {
+#gallery-header h1 {
+    margin: 0 0 10px 0;
     text-align: center;
-    margin: 8px 0;
+}
+
+#gallery-description {
+    margin: 0;
+    text-align: center;
 }
 
 #bird-results {
