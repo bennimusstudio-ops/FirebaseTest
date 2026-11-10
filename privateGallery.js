@@ -117,6 +117,9 @@ function createSaveButton(bird) {
 
         try {
             await saveData();
+            if (wasSaved) {
+                location.reload();
+            }
         }
         catch (error) {
             console.error(error);
