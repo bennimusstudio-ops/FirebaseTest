@@ -23,6 +23,7 @@ input {
 }
 
 #sidebar {
+    background-color: #b8d0a9;
     display: flex;
     flex-direction: row;
     align-items: center;
