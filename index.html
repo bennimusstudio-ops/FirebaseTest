@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AV Soundscape</title>
+
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+    <!-- Sign-in link -->
+    <a href="./loginPage.html" class="sign-in">
+        <span class="sign-in-icon"> <img src="https://www.google.com/favicon.ico" alt="Google logo"> </span>
+        <span>Sign in</span>
+    </a>
+
+    <!-- Homepage heading -->
+    <header>
+        <h1>AV Soundscape</h1>
+        <p>Discover Birds and their calls here!</p>
+    </header>
+
+    <main>
+
+        <!-- Bird image -->
+        <img
+            src="./images/blue-jay.jpg"
+            alt="Blue jay perched on a branch"
+            class="bird-image"
+        >
+
+        <!-- Bird search form -->
+        <form
+            class="search-form"
+            id="birdSearchForm"
+            action="./birdSummary.html"
+            method="get"
+        >
+
+            <span class="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                    <path d="M15.5 15.5L21 21"></path>
+                </svg>
+            </span>
+
+            <input
+                type="text"
+                id="birdSearchInput"
+                name="search"
+                placeholder="Search for a bird..."
+                aria-label="Search for a bird species"
+                required
+            >
+
+            <button
+                type="submit"
+                class="search-button"
+                aria-label="Search"
+                title="Search"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                    <path d="M15.5 15.5L21 21"></path>
+                </svg>
+            </button>
+
+        </form>
+
+        <!-- Homepage action buttons -->
+        <div class="button-container">
+
+            <button
+                type="button"
+                id="galleryButton"
+                onclick="window.location.href='./publicGallery.html'"
+            >Gallery</button>
+
+            <button
+                type="button"
+                id="guessingGameButton"
+                onclick="window.location.href='./birdGame.html'"
+            >
+                Guessing Game
+            </button>
+
+        </div>
+
+        <!-- Search message -->
+        <p
+            id="searchMessage"
+            class="search-message"
+            aria-live="polite"
+        ></p>
+
+    </main>
+
+</body>
+
+</html>
