@@ -1,8 +1,4 @@
 
-/* =========================================
-   GLOBAL
-========================================= */
-
 * {
     box-sizing: border-box;
 }
@@ -10,10 +6,8 @@
 body {
     margin: 0;
     min-height: 100vh;
-
     font-family: Arial, Helvetica, sans-serif;
     color: #111;
-
     background-color: #e5f1dc;
 }
 
@@ -22,60 +16,45 @@ input {
     font: inherit;
 }
 
-
-/* =========================================
-   MAIN APPLICATION LAYOUT
-========================================= */
-
 #app {
-    display: grid;
-
-    grid-template-columns: 170px 1fr;
-
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
-
-/* =========================================
-   SIDEBAR
-========================================= */
-
 #sidebar {
     display: flex;
-    flex-direction: column;
-
-    border-right: 1px solid #555;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 90px;
+    border-right: none;
+    border-bottom: 1px solid #555;
+    padding: 0 15px;
 }
 
 #site-title {
-    height: 155px;
-
+    height: 90px;
+    min-width: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-bottom: 1px solid #555;
-
+    border-bottom: none;
+    border-right: 1px solid #555;
     font-size: 23px;
 }
 
 .sidebar-section {
-    padding: 10px;
-
-    border-bottom: 1px solid #777;
+    padding: 10px 15px;
+    border-bottom: none;
+    border-right: 1px solid #777;
 }
 
 .sidebar-heading {
     margin: 0 0 8px 0;
-
     font-size: 13px;
     font-weight: normal;
 }
-
-
-/* =========================================
-   SEARCH
-========================================= */
 
 #search-form {
     width: 100%;
@@ -83,12 +62,9 @@ input {
 
 #bird-search {
     width: 100%;
-
     padding: 8px;
-
     border: 1px solid #ccc;
     border-radius: 5px;
-
     background-color: white;
 }
 
@@ -97,71 +73,56 @@ input {
     outline-offset: 2px;
 }
 
-
-/* =========================================
-   FAMILY FILTERS
-========================================= */
-
 #family-section {
-    min-height: 195px;
+    min-height: auto;
 }
 
 #family-list {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .family-filter {
     display: flex;
     align-items: center;
     gap: 5px;
-
     font-size: 13px;
 }
 
-
-/* =========================================
-   AUDIO FILTER
-========================================= */
-
 #filter-section {
-    min-height: 135px;
+    min-height: auto;
 }
 
 .filter-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    margin-top: 25px;
-
+    margin-top: 10px;
+    gap: 10px;
     font-size: 13px;
 }
 
-
-/* =========================================
-   ACCOUNT
-========================================= */
-
 #account-section {
-    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
 }
 
 .account-button {
-    width: 100%;
-
-    margin: 5px 0;
-    padding: 8px;
-
-    text-align: left;
-
+    width: auto;
+    margin: 5px;
+    padding: 8px 12px;
+    text-align: center;
     background-color: transparent;
-
     border: 1px solid #aaa;
     border-radius: 5px;
-
     cursor: pointer;
+}
+
+.account-button:hover {
+    background-color: #d4e7c8;
 }
 
 #bird-results {
@@ -185,11 +146,6 @@ input {
     border-radius: 6px;
 }
 
-.account-button:hover {
-    background-color: #d4e7c8;
-}
-
-
 #load-more-button {
     display: block;
     margin: 30px auto;
@@ -212,27 +168,18 @@ input {
     transform: scale(0.97);
 }
 
-/* =========================================
-   SAVE BIRD BUTTON
-========================================= */
-
 .save-bird-button {
     display: block;
     width: 80%;
     margin: 12px auto 2px;
     padding: 9px 12px;
-
     background-color: #557c50;
     color: white;
-
     border: none;
     border-radius: 7px;
-
     font-size: 14px;
     font-weight: bold;
-
     cursor: pointer;
-
     transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
@@ -242,16 +189,4 @@ input {
 
 .save-bird-button:active {
     transform: scale(0.97);
-}
-
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-
-@media (max-width: 800px) {
-
-    #app {
-        grid-template-columns: 130px 1fr;
-    }
-
 }
