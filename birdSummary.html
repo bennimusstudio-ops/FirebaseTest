@@ -107,10 +107,24 @@
             <!--If we are logged in it says logged in, otherwise it says logged out-->
             <p id="login-status" class="account-button">Logged Out</p>
 
-            <a href="privateGallery.html" class="account-button">
-            My Collection
-            </a>
+            <button
+                id="collection-button"
+                class="account-button"
+                type="button"
+                onclick="window.location.href='privateGallery.html'"
+            >
+                My Collection
+            </button>
 
+            <button
+                id="gallery-button"
+                class="account-button"
+                type="button"
+                onclick="window.location.href='publicGallery.html'"
+            >
+                Gallery
+            </button>
+            
             <button
                 id="sign-in-out-button"
                 class="account-button"
