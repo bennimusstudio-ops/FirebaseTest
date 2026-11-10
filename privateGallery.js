@@ -21,16 +21,23 @@ let loading = false;
 
 async function loadBirds(reset = false) {
     if (reset) birdResults.innerHTML = "";
+    const user = getUser();
+    const taxonIds = getTaxonIds();
 
+    
     if (taxonIds.length === 0) {
         birdResults.innerHTML = "<p>You haven't saved any birds yet!</p>";
         return;
     }
     
-     try {
-        birdResults.innerHTML = "";
+    birdResults.innerHTML = "";
+    const response = await fetch(`https://api.inaturalist.org/v1/taxa/${taxonIds.join(",")}`); 
 
-        const response = await fetch(`https://api.inaturalist.org/v1/taxa/${taxonIds.join(",")}`); 
+    const data = await response.json();
+
+    data.results.forEach(bird => {
+        createBirdCard(bird);
+    });
 }
 
 function createBirdCard(bird) {
