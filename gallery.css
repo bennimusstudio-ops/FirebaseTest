@@ -126,6 +126,19 @@ input {
     background-color: #d4e7c8;
 }
 
+#bird-gallery-heading {
+    text-align: center;
+    background-color: #557c50;
+    color: white;
+    padding: 20px;
+}
+
+#bird-gallery-heading h1,
+#bird-gallery-heading p {
+    text-align: center;
+    margin: 8px 0;
+}
+
 #bird-results {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -134,11 +147,11 @@ input {
 }
 
 .bird-card {
-    border: 1px solid #c4b99f;
+    border: 1px solid #b5cba9;
     border-radius: 10px;
     padding: 12px;
     cursor: pointer;
-    background-color: #d6c7a9;
+    background-color: #b8d0a9;
 }
 
 .bird-card img {
