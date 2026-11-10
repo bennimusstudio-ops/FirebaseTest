@@ -35,7 +35,8 @@ input {
 
 #site-title {
     height: 90px;
-    min-width: 170px;
+    min-width: 220px;
+    padding: 0 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,14 +130,15 @@ input {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
+    padding: 30px;
 }
 
 .bird-card {
-    border: 1px solid #ccc;
+    border: 1px solid #c4b99f;
     border-radius: 10px;
     padding: 12px;
     cursor: pointer;
-    background-color: white;
+    background-color: #d6c7a9;
 }
 
 .bird-card img {
