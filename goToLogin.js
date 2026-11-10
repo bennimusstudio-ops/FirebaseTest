@@ -8,11 +8,13 @@ const loginStatus = document.getElementById("login-status");
 const signInOutButton = document.getElementById("sign-in-out-button");
 
 onAuthStateChanged(auth, (user) => {
+    if (loginStatus) {
+        loginStatus.textContent = user ? "Logged In" : "Logged Out";
+    }
+
     if (user) {
-        loginStatus.textContent = "Logged In";
         signInOutButton.textContent = "Sign Out";
     } else {
-        loginStatus.textContent = "Logged Out";
         signInOutButton.textContent = "Sign In";
     }
 });
